@@ -429,10 +429,10 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  height: 100vh;
-  background: url("../img/UnsplashPics/samsung-memory-tWEo5fPM8gk-unsplash.jpg") top right;
-  background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background: url("../img/Centriq_Classmates/WayneGraduation.jpg");
+    background-size: cover;
 }
 
 #hero:before {
