@@ -4,7 +4,7 @@
     ViewData["Title"] = "Contact";
 }
 
-<h1>Contact</h1>
+<h1>@ViewData["Title"]</h1>
 
 <main id="main">
 
@@ -13,13 +13,22 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Contact</h2>
+                <h2>@ViewData["Title"]</h2>
                 <p>Below are my contact details.</p>
             </div>
 
             <div>
                 <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47855.3468199198!2d-96.4927415!3d41.44010745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x879160c17f899807%3A0x3603ff1ceabe03ad!2sFremont%2C%20NE%2068025!5e0!3m2!1sen!2sus!4v1660333377962!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen></iframe>
             </div>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="row">
+                    <p style="color: red; font-style: italic;">
+                        @Html.Raw(ViewBag.ErrorMessage)
+                    </p>
+                </div>
+            }
 
             <div class="row mt-5">
 
@@ -49,7 +58,7 @@
 
                 <div class="col-lg-8 mt-5 mt-lg-0">
 
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    @*<form asp-action="Contact" class="php-email-form">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -70,6 +79,33 @@
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
                         <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>*@
+
+                    <form asp-action="Contact">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            @*<label asp-for="Name" class="control-label"></label>*@
+                            <input asp-for="Name" class="form-control" placeholder="Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            @* <label asp-for="Email" class="control-label"></label>*@
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            @*<label asp-for="Subject" class="control-label"></label>*@
+                            <input asp-for="Subject" class="form-control" placeholder="Subject" />
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            @*<label asp-for="Message" class="control-label"></label>*@
+                            <textarea asp-for="Message" class="form-control" placeholder="Message"></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <input type="submit" value="Send Message" class="btn btn-success" />
+                        </div>
                     </form>
 
                 </div>
@@ -81,38 +117,11 @@
 
 </main><!-- End #main -->
 
-<div class="row">
-    <div class="col-lg-8 mt-5 mt-lg-0">
-        <form asp-action="Contact" class="php-email-form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subject" class="control-label"></label>
-                <input asp-for="Subject" class="form-control" />
-                <span asp-validation-for="Subject" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Message" class="control-label"></label>
-                <textarea asp-for="Message" class="form-control"></textarea>
-                <span asp-validation-for="Message" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 @*    <script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="~/assets/vendor/aos/aos.js"></script>

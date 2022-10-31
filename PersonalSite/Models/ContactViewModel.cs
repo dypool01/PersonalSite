@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace PersonalSite.Models
 {
+    
     public class ContactViewModel
     {
-        //We can use Data Annotations to add validation to our model.
-        //This is useful when we have rquired fields or need certain types of info.
 
         [Required(ErrorMessage = "*Name is required")] //Makes the field required
         public string Name { get; set; }

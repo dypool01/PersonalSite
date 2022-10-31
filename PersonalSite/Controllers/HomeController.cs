@@ -51,6 +51,11 @@ namespace PersonalSite.Controllers
             return View();
         }
 
+        public IActionResult ReactJS()
+        {
+            return View();
+        }
+
         //Add a field for the Configuration settings in appsettings.json
         private readonly IConfiguration _config;
 
