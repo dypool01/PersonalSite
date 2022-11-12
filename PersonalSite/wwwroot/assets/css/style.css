@@ -439,7 +439,6 @@ h6 {
 
     #hero:before {
         content: "";
-        background: rgba(255, 255, 255, 0.3);
         background-size: contain;
         width: 100%;
         height: calc(100vw * 1080 / 1920);
@@ -451,8 +450,9 @@ h6 {
     }
 
 #hero .container {
-  padding-top: 70px;
+  padding-top: 20px;
   position: relative;
+  background-color: rgba(255, 255, 255, .3)
 }
 
 @media (max-width: 992px) {
@@ -501,15 +501,17 @@ h6 {
 }
 
 @media (max-width: 992px) {
-  #hero:before {
-    content: "";
-    background: rgba(255, 255, 255, 0.3);
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
+    #hero:before {
+        content: "";
+        background-size: contain;
+        width: 100%;
+        height: calc(100vw * 1080 / 1920);
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 
   #hero h1 {
     font-size: inherit;
